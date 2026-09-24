@@ -35,6 +35,21 @@ def get_points(maze):
 def get_manhattan_distance(current, goal):
      return abs(current[0]- goal[0]) + abs(current[1] - goal[1])
 
+# Function returns possible nearby states
+def get_adjacent_states(position, maze, rows, columns):
+
+    row, column = position
+    adj_states = []
+
+    # moves -->:Up,    Down,    Left,   Right   
+    moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+    for d_row, d_column in moves:
+         new_row, new_column = row + d_row, column + d_column
+         if 0 <= new_row < rows and 0 <= new_column < columns and maze[new_row][new_column] != '0':
+              adj_states.append((new_row, new_column))
+
+    return adj_states
 
 def main():
 
